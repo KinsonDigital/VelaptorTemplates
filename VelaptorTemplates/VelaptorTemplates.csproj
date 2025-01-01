@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageVersion>1.0.0-preview.1</PackageVersion>
+        <PackageId>KinsonDigital.TestTemplate</PackageId>
+        <Title>Test Template Project</Title>
+        <Authors>Calvin Wilkinson</Authors>
+        <Description>Test template for learning purposes.</Description>
+        <PackageTags>template</PackageTags>
+        <IncludeContentInPack>true</IncludeContentInPack>
+
+        <!-- DO NOT INCLUDE THE BUILD OUTPUT IN THE PKG -->
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Templates\" />
+    </ItemGroup>
+</Project>

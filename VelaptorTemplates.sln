@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# 
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelaptorTemplates", "VelaptorTemplates\VelaptorTemplates.csproj", "{D85354EC-A891-44B1-829D-EDDD592693DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VelaptorTemplates", "VelaptorTemplates", "{86B02555-09AE-4020-A13E-391E432A2821}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{BCE36EA8-08F6-44AE-83CF-D0F00F6F9962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelEmpty", "VelaptorTemplates\Templates\VelEmpty\VelEmpty.csproj", "{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D85354EC-A891-44B1-829D-EDDD592693DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85354EC-A891-44B1-829D-EDDD592693DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85354EC-A891-44B1-829D-EDDD592693DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85354EC-A891-44B1-829D-EDDD592693DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D85354EC-A891-44B1-829D-EDDD592693DF} = {86B02555-09AE-4020-A13E-391E432A2821}
+		{BCE36EA8-08F6-44AE-83CF-D0F00F6F9962} = {86B02555-09AE-4020-A13E-391E432A2821}
+		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5} = {BCE36EA8-08F6-44AE-83CF-D0F00F6F9962}
+	EndGlobalSection
+EndGlobal
