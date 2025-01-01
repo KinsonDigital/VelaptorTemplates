@@ -1,0 +1,145 @@
+name: 🚀Release
+run-name: ${{ vars.PROJECT_NAME }} Production Release ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Dry Run - Check to run the workflow without creating a release.
+        required: false
+        default: false
+        type: boolean
+
+
+jobs:
+  validate_version:
+    name: Validate Version
+    uses: KinsonDigital/Infrastructure/.github/workflows/validate-csharp-version.yml@v14.1.0
+    with:
+      project-name: "${{ vars.PROJECT_NAME }}"
+      release-type: "Production"
+    secrets:
+      cicd-pat: "${{ secrets.CICD_TOKEN }}"
+
+  get_release_notes_path:
+    name: Get Release Notes Dir Path
+    runs-on: ubuntu-latest
+    outputs:
+      release-notes-dir-path: ${{ steps.get-dir-path.outputs.release-notes-dir-path }}
+    steps:
+      - name: Get Dir Path
+        id: get-dir-path
+        run: |
+          $dirPath = "${{ vars.PROD_RELATIVE_RELEASE_NOTES_DIR_PATH }}";
+          "release-notes-dir-path=$dirPath" >> $env:GITHUB_OUTPUT;
+
+  build_vel_empty_template_proj:
+    name: Build VelEmpty Proj Template
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+
+      - name: Build Project
+        run: |
+          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelEmpty/VelEmpty.csproj";
+          dotnet build $projFilePath -c Release;
+
+  build_vel_render_texture_proj:
+    name: Build VelRenderTexture Proj Template
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+
+      - name: Build Project
+        run: |
+          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelRenderTexture/VelRenderTexture.csproj";
+          dotnet build $projFilePath -c Release;
+        
+  run_release:
+    name: Performing Production Release of ${{ vars.PROJECT_NAME }}
+    needs: [validate_version, get_release_notes_path, build_vel_empty_template_proj, build_vel_render_texture_proj]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v2
+
+      - name: Create Nuget Package
+        run: |
+          dotnet pack `
+            "${{ github.workspace }}/${{ vars.PROJECT_NAME }}/${{ vars.PROJECT_NAME }}.csproj" `
+            -o "${{ github.workspace }}" `
+            -c Release `
+            -p:IncludeSymbols=true;
+
+      - name: Publish Nuget Package
+        if: ${{ inputs.dry-run == false }}
+        run: |
+          $version = "${{ needs.validate_version.outputs.version }}";
+          $version = $version.StartsWith("v") ? $version.Substring(1) : $version;
+
+          # Push the nuget package
+          dotnet nuget push `
+            "${{ github.workspace }}/${{ vars.ORGANIZATION_NAME }}.${{ vars.PROJECT_NAME }}.$version.nupkg" `
+            --api-key ${{ secrets.NUGET_ORG_API_KEY }} `
+            --source https://api.nuget.org/v3/index.json;
+
+      - name: Create GitHub Release ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
+        if: ${{ inputs.dry-run == false }}
+        uses: ncipollo/release-action@v1
+        with:
+          name: "🚀Production - ${{ needs.validate_version.outputs.version }}"
+          tag: ${{ needs.validate_version.outputs.version }}
+          owner: ${{ vars.ORGANIZATION_NAME }}
+          repo: ${{ vars.PROJECT_NAME }}
+          bodyFile: "${{ github.workspace }}/ReleaseNotes/ProductionReleases/Release-Notes-v${{ needs.validate_version.outputs.version }}.md"
+          artifacts: "${{ github.workspace }}/ReleaseNotes/ProductionReleases/Release-Notes-v${{ needs.validate_version.outputs.version }}.md"
+          prerelease: false
+
+      - name: Set Up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+
+      - name: Create Script URL
+        id: script-url
+        run: |
+          # Construct the URL to the organizations CICD scripts
+          $url = "${{ vars.SCRIPT_BASE_URL }}/${{ vars.CICD_SCRIPTS_VERSION }}/${{ vars.SCRIPT_RELATIVE_DIR_PATH }}";
+          $url = $url.Replace("\", "/").Replace("//", "/");
+          $url = $url.EndsWith("/") ? $url.Substring(0, $url.Length - 1) : $url;
+          
+          Write-Host "::notice::DotNet Lib Release Script URL: $url";
+          "url=$url" >> "$env:GITHUB_OUTPUT";
+
+      - name: Close Milestone
+        if: ${{ inputs.dry-run == false }}
+        env:
+          MILESTONE_NAME: "${{ needs.validate_version.outputs.version }}"
+          GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
+        run: deno run -ERN "${{ steps.script-url.outputs.url }}/close-milestone.ts";

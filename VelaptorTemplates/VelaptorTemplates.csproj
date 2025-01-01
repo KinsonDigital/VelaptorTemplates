@@ -5,29 +5,43 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <!--Update this for production and preview releases-->
+        <Version>1.0.0</Version>
+
+        <!--Update this for production and preview releases-->
+        <FileVersion>1.0.0</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>1.0.0-preview.1</PackageVersion>
-        <PackageId>KinsonDigital.TestTemplate</PackageId>
-        <Title>Test Template Project</Title>
+        <PackageId>KinsonDigital.VelaptorTemplates</PackageId>
+        <Title>Velaptor project templates</Title>
         <Authors>Calvin Wilkinson</Authors>
-        <Description>Test template for learning purposes.</Description>
-        <PackageTags>template</PackageTags>
+        <Description>Various project templates for creating Velaptor based games and applications.</Description>
+        <PackageTags>velaptor template templates game games framework</PackageTags>
         <IncludeContentInPack>true</IncludeContentInPack>
-
+        <Platforms>x64</Platforms>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        
         <!-- DO NOT INCLUDE THE BUILD OUTPUT IN THE PKG -->
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
-        <Compile Remove="**\*" />
+      <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
+      <Compile Remove="**\*" />
+      <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+      <None Include="..\README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Templates\" />
+      <EmbeddedResource Remove="Templates\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Templates\**" />
     </ItemGroup>
 </Project>

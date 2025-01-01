@@ -8,11 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include=".template.config\template.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="KinsonDigital.Velaptor" Version="1.0.0-preview.39" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include=".template.config\template.json" />
+    <None Update="Content\Graphics\velaptor-logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
