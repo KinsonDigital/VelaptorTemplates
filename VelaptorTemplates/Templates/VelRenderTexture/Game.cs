@@ -67,6 +67,16 @@ public class Game : Window
 	}
 
 	/// <summary>
+	/// Unload content here.
+	/// </summary>
+	protected override void OnUnload()
+	{
+		this.textureLoader.Unload(this.logo);
+
+		base.OnUnload();
+	}
+
+	/// <summary>
 	/// Add game logic here.
 	/// </summary>
 	/// <param name="frameTime">The amount of time that passed for the current game loop frame.</param>
