@@ -11,9 +11,17 @@
     },
     "cSpell.words": [
         "CICD",
+        "denoland",
         "gamedev",
         "Kinson",
+        "ncipollo",
+        "nupkg",
+        "pwsh",
         "REPONAME",
         "Velaptor"
-    ]
+    ],
+    "[github-actions-workflow]": {
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true
+	}
 }
