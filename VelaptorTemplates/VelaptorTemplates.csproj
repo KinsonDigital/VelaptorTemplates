@@ -16,15 +16,20 @@
         <Description>Various project templates for creating Velaptor based games and applications.</Description>
         <PackageTags>velaptor template templates game games framework</PackageTags>
         <IncludeContentInPack>true</IncludeContentInPack>
-
+        <Platforms>x64</Platforms>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        
         <!-- DO NOT INCLUDE THE BUILD OUTPUT IN THE PKG -->
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
-        <Compile Remove="**\*" />
+      <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
+      <Compile Remove="**\*" />
+      <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+      <None Include="..\README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
