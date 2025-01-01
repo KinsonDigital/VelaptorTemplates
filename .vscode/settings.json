@@ -1,0 +1,27 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".idea": true,
+        ".run": true,
+    },
+    "cSpell.words": [
+        "CICD",
+        "denoland",
+        "gamedev",
+        "Kinson",
+        "ncipollo",
+        "nupkg",
+        "pwsh",
+        "REPONAME",
+        "Velaptor"
+    ],
+    "[github-actions-workflow]": {
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true
+	}
+}
