@@ -1,0 +1,31 @@
+name: ✅Build Status Check
+run-name: ✅Build Status Check (${{ github.base_ref }} branch)
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  pull_request:
+    branches: [main]
+
+
+jobs:
+  build_vel_render_texture_status_check:
+    name: VelRenderTexture Proj Template Build Status Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+
+      - name: Build Project
+        run: |
+          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelRenderTexture/VelRenderTexture.csproj";
+          dotnet build $projFilePath -c Release;
