@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelaptorTemplates", "VelaptorTemplates\VelaptorTemplates.csproj", "{D85354EC-A891-44B1-829D-EDDD592693DF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VelaptorTemplates", "VelaptorTemplates", "{86B02555-09AE-4020-A13E-391E432A2821}"
@@ -8,6 +8,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{BCE36EA8-08F6-44AE-83CF-D0F00F6F9962}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelEmpty", "VelaptorTemplates\Templates\VelEmpty\VelEmpty.csproj", "{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelRenderTexture", "VelaptorTemplates\Templates\VelRenderTexture\VelRenderTexture.csproj", "{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1A2DFA7D-1B2B-4CF4-A292-15419F2579C7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		create-pr.ps1 = create-pr.ps1
+		LICENSE = LICENSE
+		prepare-for-release.ps1 = prepare-for-release.ps1
+		prod-prepare-release-template.md = prod-prepare-release-template.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +35,15 @@ Global
 		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D85354EC-A891-44B1-829D-EDDD592693DF} = {86B02555-09AE-4020-A13E-391E432A2821}
 		{BCE36EA8-08F6-44AE-83CF-D0F00F6F9962} = {86B02555-09AE-4020-A13E-391E432A2821}
 		{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5} = {BCE36EA8-08F6-44AE-83CF-D0F00F6F9962}
+		{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4} = {BCE36EA8-08F6-44AE-83CF-D0F00F6F9962}
 	EndGlobalSection
 EndGlobal
