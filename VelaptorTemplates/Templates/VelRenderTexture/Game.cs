@@ -45,7 +45,7 @@ public class Game : Window
 		this.textureRenderer = RendererFactory.CreateTextureRenderer();
 
 			// Used for loading textures.
-		this.contentManager = ContentManager.Create();		
+		this.contentManager = ContentManager.Create();
 
 		// Used for detecting keyboard input.
 		this.keyboard = HardwareFactory.GetKeyboard();
