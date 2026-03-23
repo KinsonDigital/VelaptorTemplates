@@ -6,7 +6,6 @@ using System.Numerics;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
@@ -19,7 +18,7 @@ public class Game : Window
 	private const float MaxVel = 350;
 	private readonly IBatcher batcher;
 	private readonly ITextureRenderer textureRenderer;
-	private readonly ILoader<ITexture> textureLoader;
+	private readonly IContentManager contentManager;
 	private readonly IAppInput<KeyboardState> keyboard;
 	private ITexture? logo;
 	private KeyboardState prevKeyState;
@@ -45,8 +44,8 @@ public class Game : Window
 		// Used for rendering textures.
 		this.textureRenderer = RendererFactory.CreateTextureRenderer();
 
-		// Used for loading textures.
-		this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+			// Used for loading textures.
+		this.contentManager = ContentManager.Create();		
 
 		// Used for detecting keyboard input.
 		this.keyboard = HardwareFactory.GetKeyboard();
@@ -58,7 +57,7 @@ public class Game : Window
 	protected override void OnLoad()
 	{
 		// This loads the 'velaptor-logo' texture from the 'Content/Graphics' directory located in the project.
-		this.logo = this.textureLoader.Load("velaptor-logo");
+		this.logo = this.contentManager.Load<ITexture>("velaptor-logo");
 
 		// Set the starting position of the logo to the center of the window.
 		this.position = new Vector2(Width / 2f, Height / 2f);
@@ -71,7 +70,10 @@ public class Game : Window
 	/// </summary>
 	protected override void OnUnload()
 	{
-		this.textureLoader.Unload(this.logo);
+		if (this.logo is not null)
+		{
+			this.contentManager.Unload(this.logo);
+		}
 
 		base.OnUnload();
 	}
