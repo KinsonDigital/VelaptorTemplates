@@ -1,4 +1,7 @@
 {
+    "deno.enablePaths": [
+        "./DevTools/"
+    ],
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -14,6 +17,7 @@
         "denoland",
         "gamedev",
         "Kinson",
+        "kinsondigital",
         "ncipollo",
         "nupkg",
         "pwsh",
@@ -21,7 +25,7 @@
         "Velaptor"
     ],
     "[github-actions-workflow]": {
-		"editor.tabSize": 2,
-		"editor.insertSpaces": true
-	}
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    }
 }
