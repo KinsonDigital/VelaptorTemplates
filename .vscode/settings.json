@@ -11,6 +11,9 @@
         "**/Thumbs.db": true,
         ".idea": true,
         ".run": true,
+        ".vs": true,
+        "**/bin": true,
+        "**/obj": true,
     },
     "cSpell.words": [
         "CICD",
