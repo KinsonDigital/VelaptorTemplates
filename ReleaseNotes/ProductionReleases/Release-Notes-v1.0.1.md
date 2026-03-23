@@ -4,4 +4,4 @@ VelaptorTemplates Production Release Notes - v1.0.1
 
 <h2 align="center" style="font-weight: bold;">Enhancements 💎</h2>
 
-1. [#5](https://github.com/KinsonDigital/Velaptor/issues/5) - Updated templates to use the latest version of Velaptor.
+1. [#5](https://github.com/KinsonDigital/VelaptorTemplates/issues/5) - Updated templates to use the latest version of Velaptor.
