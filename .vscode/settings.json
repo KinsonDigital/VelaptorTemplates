@@ -1,4 +1,7 @@
 {
+    "deno.enablePaths": [
+        "./DevTools/"
+    ],
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -8,12 +11,16 @@
         "**/Thumbs.db": true,
         ".idea": true,
         ".run": true,
+        ".vs": true,
+        "**/bin": true,
+        "**/obj": true,
     },
     "cSpell.words": [
         "CICD",
         "denoland",
         "gamedev",
         "Kinson",
+        "kinsondigital",
         "ncipollo",
         "nupkg",
         "pwsh",
@@ -21,7 +28,7 @@
         "Velaptor"
     ],
     "[github-actions-workflow]": {
-		"editor.tabSize": 2,
-		"editor.insertSpaces": true
-	}
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    }
 }
