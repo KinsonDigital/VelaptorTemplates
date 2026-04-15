@@ -14,7 +14,7 @@ on:
 
 jobs:
   build_vel_empty_status_check:
-    name: VelEmpty Proj Template Build Status Check
+    name: VelaptorEmpty Proj Template Build Status Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -27,5 +27,5 @@ jobs:
 
       - name: Build Project
         run: |
-          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelEmpty/VelEmpty.csproj";
+          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelaptorEmpty/VelaptorEmpty.csproj";
           dotnet build $projFilePath -c Release;
