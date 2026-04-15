@@ -8,7 +8,7 @@
         "game dev",
         "velaptor templates"
     ],
-    "identity": "VelaptorTemplates.VelRenderTexture",
+    "identity": "VelaptorTemplates.VelaptorRenderTexture",
     "name": "Velaptor (Render Single Texture)",
     "shortName": "VelaptorRenderTexture",
     "sourceName": "VelaptorRenderTexture",
