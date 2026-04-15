@@ -1,10 +1,20 @@
 {
     "$schema": "https://json.schemastore.org/template",
     "author": "KinsonDigital",
-    "classifications": ["velaptor", "gamedev", "game-dev", "game dev", "velaptor templates"],
+    "classifications": [
+        "velaptor",
+        "gamedev",
+        "game-dev",
+        "game dev",
+        "velaptor templates"
+    ],
     "identity": "VelaptorTemplates.VelRenderTexture",
-    "name": "Render Single Texture Velaptor Project",
-    "shortName": "VelRenderTexture",
-    "sourceName": "VelRenderTexture",
-    "preferNameDirectory": true
+    "name": "Velaptor (Render Single Texture)",
+    "shortName": "VelaptorRenderTexture",
+    "sourceName": "VelaptorRenderTexture",
+    "preferNameDirectory": true,
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    }
 }
