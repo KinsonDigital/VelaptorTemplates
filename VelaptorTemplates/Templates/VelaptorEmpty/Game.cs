@@ -1,4 +1,4 @@
-﻿namespace VelEmpty;
+﻿namespace VelaptorEmpty;
 
 using Velaptor;
 using Velaptor.UI;

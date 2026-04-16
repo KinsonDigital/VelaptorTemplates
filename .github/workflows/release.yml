@@ -40,7 +40,7 @@ jobs:
           "release-notes-dir-path=$dirPath" >> $env:GITHUB_OUTPUT;
 
   build_vel_empty_template_proj:
-    name: Build VelEmpty Proj Template
+    name: Build VelaptorEmpty Proj Template
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -53,11 +53,11 @@ jobs:
 
       - name: Build Project
         run: |
-          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelEmpty/VelEmpty.csproj";
+          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelaptorEmpty/VelaptorEmpty.csproj";
           dotnet build $projFilePath -c Release;
 
   build_vel_render_texture_proj:
-    name: Build VelRenderTexture Proj Template
+    name: Build VelaptorRenderTexture Proj Template
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -70,7 +70,7 @@ jobs:
 
       - name: Build Project
         run: |
-          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelRenderTexture/VelRenderTexture.csproj";
+          $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelaptorRenderTexture/VelaptorRenderTexture.csproj";
           dotnet build $projFilePath -c Release;
         
   run_release:

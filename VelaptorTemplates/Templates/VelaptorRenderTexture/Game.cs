@@ -1,6 +1,6 @@
 ﻿using Velaptor.Input;
 
-namespace VelRenderTexture;
+namespace VelaptorRenderTexture;
 
 using System.Numerics;
 using Velaptor;
