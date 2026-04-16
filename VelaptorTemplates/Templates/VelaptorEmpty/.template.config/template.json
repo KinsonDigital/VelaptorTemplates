@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json.schemastore.org/template",
+    "author": "KinsonDigital",
+    "classifications": [
+        "velaptor",
+        "gamedev",
+        "game-dev",
+        "game dev",
+        "velaptor templates"
+    ],
+    "identity": "VelaptorTemplates.VelaptorEmpty",
+    "name": "Velaptor (Empty)",
+    "shortName": "VelaptorEmpty",
+    "sourceName": "VelaptorEmpty",
+    "preferNameDirectory": true,
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    }
+}
