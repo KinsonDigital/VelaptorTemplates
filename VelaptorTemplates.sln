@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelaptorEmpty", "VelaptorTemplates\Templates\VelaptorEmpty\VelaptorEmpty.csproj", "{2AA3B934-D685-4C45-9F80-4B5C0AF96CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeleptorRenderTexture", "VelaptorTemplates\Templates\VelaptorRenderTexture\VeleptorRenderTexture.csproj", "{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelaptorRenderTexture", "VelaptorTemplates\Templates\VelaptorRenderTexture\VelaptorRenderTexture.csproj", "{2F8A49F7-1DF4-4D15-9649-6111ABD91BF4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1A2DFA7D-1B2B-4CF4-A292-15419F2579C7}"
 	ProjectSection(SolutionItems) = preProject
