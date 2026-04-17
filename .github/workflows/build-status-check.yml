@@ -20,10 +20,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET SDK (${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+          dotnet-version: "${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }}"
 
       - name: List CSProj Files
         run: |
@@ -41,10 +41,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET SDK (${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+          dotnet-version: "${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }}"
 
       - name: Build Project
         run: |

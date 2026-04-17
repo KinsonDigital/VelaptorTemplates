@@ -12,7 +12,7 @@
         ".idea": true,
         ".run": true,
         ".vs": true,
-        "**/bin": true,
+        "**/bin": false,
         "**/obj": true,
     },
     "cSpell.words": [
@@ -23,8 +23,10 @@
         "kinsondigital",
         "ncipollo",
         "nupkg",
+        "OPTOUT",
         "pwsh",
         "REPONAME",
+        "Tele",
         "Velaptor"
     ],
     "[github-actions-workflow]": {

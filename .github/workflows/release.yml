@@ -46,10 +46,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET SDK (${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+          dotnet-version: "${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }}"
 
       - name: Build Project
         run: |
@@ -63,10 +63,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET SDK (${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "${{ vars.NET_SDK_VERSION }}"
+          dotnet-version: "${{ vars.TEMPLATE_PROJECTS_NET_SDK_VERSION }}"
 
       - name: Build Project
         run: |
@@ -81,7 +81,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDK
+      - name: Setup .NET SDK (${{ vars.NET_SDK_VERSION }})
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "${{ vars.NET_SDK_VERSION }}"

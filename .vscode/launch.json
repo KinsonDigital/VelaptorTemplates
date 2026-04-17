@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        { // DEBUG (VTT)
+            "name": "Debug (VTT)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-velaptor-telemetry-tool",
+            "program": "${workspaceFolder}/VelaptorTelemetryTool/bin/Debug/net10.0/VelaptorTelemetryTool.dll",
+            "env": {
+                "VTT_ENV": "${env:VTT_ENV}"
+            },
+            "args": [
+                "--template-type",
+                "VelaptorRenderTexture",
+                "--template-version",
+                "1.0.1",
+                "--server-host",
+                "localhost:8000",
+                "--endpoint",
+                "velaptor-template-telemetry"
+            ],
+            "cwd": "${workspaceFolder}/VelaptorTelemetryTool",
+            "console": "internalConsole",
+            "justMyCode": true
+        },
+        { // UPDATE TEMPLATE VERSIONS
+            "name": "UpdateTemplateVersions",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-update-template-versions",
+            "program": "${workspaceFolder}/.github/cicd/scripts/bin/Debug/net10.0/update-template-versions.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/.github/cicd/scripts",
+            "console": "internalConsole",
+            "justMyCode": true
+        }
+    ]
+}

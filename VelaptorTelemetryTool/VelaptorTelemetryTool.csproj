@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!--Update this for production and preview releases-->
+    <Version>2.0.0</Version>
+
+    <!--Update this for production and preview releases-->
+    <FileVersion>2.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Required: marks this as a dotnet tool package -->
+    <PackAsTool>true</PackAsTool>
+    <PackageId>KinsonDigital.VelaptorTelemetryTool</PackageId>
+    <ToolCommandName>vtt</ToolCommandName>
+
+    <!-- NuGet metadata -->
+    <Title>Velaptor Telemetry Tool</Title>
+    <Authors>Calvin Wilkinson</Authors>
+    <Description>Anonymous adoption telemetry tool for Velaptor project templates. Set VELAPTOR_TELEMETRY_OPTOUT=1 to disable.</Description>
+    <PackageTags>velaptor telemetry templates</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/KinsonDigital/VelaptorTemplates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KinsonDigital/VelaptorTemplates</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.6" />
+  </ItemGroup>
+
+</Project>

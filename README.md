@@ -9,6 +9,11 @@ Installing the templates can be done using the following dotnet cli command:
 dotnet new install KinsonDigital.VelaptorTemplates
 ```
 
+To update VelaptorTemplates as well as other dotnet templates, run the following dotnet cli command:
+```bash
+dotnet new update
+```
+
 To create an empty bare-bones Velaptor project, run the following command in your directory of choice:
 ```bash
 dotnet new VelaptorEmpty --name <your-proj-name-here>
