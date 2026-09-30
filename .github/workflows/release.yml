@@ -27,6 +27,7 @@ jobs:
     secrets:
       cicd-pat: "${{ secrets.CICD_TOKEN }}"
 
+
   get_release_notes_path:
     name: Get Release Notes Dir Path
     runs-on: ubuntu-latest
@@ -38,6 +39,7 @@ jobs:
         run: |
           $dirPath = "${{ vars.PROD_RELATIVE_RELEASE_NOTES_DIR_PATH }}";
           "release-notes-dir-path=$dirPath" >> $env:GITHUB_OUTPUT;
+
 
   build_vel_empty_template_proj:
     name: Build VelaptorEmpty Proj Template
@@ -56,6 +58,7 @@ jobs:
           $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelaptorEmpty/VelaptorEmpty.csproj";
           dotnet build $projFilePath -c Release;
 
+
   build_vel_render_texture_proj:
     name: Build VelaptorRenderTexture Proj Template
     runs-on: ubuntu-latest
@@ -72,7 +75,8 @@ jobs:
         run: |
           $projFilePath = "${{ github.workspace }}/VelaptorTemplates/Templates/VelaptorRenderTexture/VelaptorRenderTexture.csproj";
           dotnet build $projFilePath -c Release;
-        
+
+
   run_release:
     name: Performing Production Release of ${{ vars.PROJECT_NAME }}
     needs: [validate_version, get_release_notes_path, build_vel_empty_template_proj, build_vel_render_texture_proj]
@@ -118,7 +122,6 @@ jobs:
           owner: ${{ vars.ORGANIZATION_NAME }}
           repo: ${{ vars.PROJECT_NAME }}
           bodyFile: "${{ github.workspace }}/ReleaseNotes/ProductionReleases/Release-Notes-v${{ needs.validate_version.outputs.version }}.md"
-          artifacts: "${{ github.workspace }}/ReleaseNotes/ProductionReleases/Release-Notes-v${{ needs.validate_version.outputs.version }}.md"
           prerelease: false
 
       - name: Set Up Deno
