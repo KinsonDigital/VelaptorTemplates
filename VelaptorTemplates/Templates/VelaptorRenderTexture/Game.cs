@@ -1,4 +1,5 @@
 ﻿using Velaptor.Input;
+using Velaptor.WebGpu.Batching;
 
 namespace VelaptorRenderTexture;
 
@@ -21,7 +22,6 @@ public class Game : Window
 	private readonly IContentManager contentManager;
 	private readonly IAppInput<KeyboardState> keyboard;
 	private ITexture? logo;
-	private KeyboardState prevKeyState;
 	private Vector2 position;
 	private Vector2 velocity = new(0, 0);
 	private const float VelocityX = 50f;
@@ -114,9 +114,6 @@ public class Game : Window
 
 		// Move the logo.
 		this.position += deltaVel;
-
-		// Save the current key state for the next frame.
-		this.prevKeyState = currentKeyState;
 
 		base.OnUpdate(frameTime);
 	}
