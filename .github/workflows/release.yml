@@ -121,7 +121,7 @@ jobs:
           dotnet-version: "${{ vars.NET_SDK_VERSION }}"
 
       - name: Setup Nuget
-        uses: NuGet/setup-nuget@v2
+        uses: NuGet/setup-nuget@fd55a6f3b34392fa83fde1454582407d8c714123 # v4.0.0
 
       - name: Create Nuget Package
         run: |
