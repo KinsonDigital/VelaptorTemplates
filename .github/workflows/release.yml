@@ -20,7 +20,7 @@ on:
 jobs:
   validate_version:
     name: Validate Version
-    uses: KinsonDigital/Infrastructure/.github/workflows/validate-csharp-version.yml@v14.1.0
+    uses: KinsonDigital/Infrastructure/.github/workflows/validate-csharp-version.yml@v19.0.1
     with:
       project-name: "${{ vars.PROJECT_NAME }}"
       release-type: "Production"
