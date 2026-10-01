@@ -171,6 +171,50 @@ jobs:
           "url=$url" >> "$env:GITHUB_OUTPUT";
 
 
+  send_release_announcements:
+    name: Send Release Announcements
+    runs-on: ubuntu-24.04
+    needs: [get_and_validate_version, validate_release,
+      build_vel_empty_template_proj, build_vel_render_texture_proj,
+      run_release]
+    if: ${{ inputs.dry-run == false }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Send X Release Announcement
+        uses: KinsonDigital/Infrastructure/actions/send-x-release-announcement@5dade832543507f6ee8f9123794ca7dd3b317e67 # v19.0.1
+        continue-on-error: true
+        with:
+          repo-owner: ${{ vars.ORGANIZATION_NAME }}
+          project-name: ${{ vars.PROJECT_NAME }}
+          version: ${{ needs.get_and_validate_version.outputs.version }}
+          website-url: ${{ vars.WEBSITE_URL }}
+          local-post-template-file-path: "${{ github.workspace }}/templates/release-announcement.txt"
+          discord-invite-code: ${{ vars.DISCORD_INVITE_CODE }}
+          access-token-key: ${{ secrets.X_ACCESS_TOKEN_KEY }}
+          access-token-secret: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          consumer-api-key: ${{ secrets.X_CONSUMER_API_KEY }}
+          consumer-api-secret: ${{ secrets.X_CONSUMER_API_SECRET }}
+          cache-enabled: false
+          github-token: ${{ secrets.CICD_TOKEN }}
+
+      - name: Send Bluesky Release Announcement
+        uses: KinsonDigital/Infrastructure/actions/send-bluesky-release-announcement@5dade832543507f6ee8f9123794ca7dd3b317e67 # v19.0.1
+        with:
+          repo-owner: ${{ vars.ORGANIZATION_NAME }}
+          project-name: ${{ vars.PROJECT_NAME }}
+          version: ${{ needs.get_and_validate_version.outputs.version }}
+          website-url: ${{ vars.WEBSITE_URL }}
+          local-post-template-file-path: "${{ github.workspace }}/templates/release-announcement.txt"
+          discord-invite-code: ${{ vars.DISCORD_INVITE_CODE }}
+          service: ${{ vars.BLUESKY_SERVICE }}
+          identifier: ${{ secrets.BLUESKY_IDENTIFIER }}
+          password: ${{ secrets.BLUESKY_PASSWORD }}
+          cache-enabled: false
+          github-token: ${{ secrets.CICD_TOKEN }}
+
+
   process_milestone:
     name: Process Milestone ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
     needs: [get_and_validate_version, validate_release, build_vel_empty_template_proj, build_vel_render_texture_proj, run_release]
