@@ -15,13 +15,13 @@ import {
 	createCommit,
 	isCheckedOut,
 	pushToRemote,
-} from "jsr:@kinsondigital/sprocket@2.2.0/git";
+} from "jsr:@kinsondigital/sprocket@3.0.1/git";
 import {
 	printCyan,
 	printGray,
 	printIndianRed,
 	printYellow,
-} from "jsr:@kinsondigital/sprocket@2.2.0/console";
+} from "jsr:@kinsondigital/sprocket@3.0.1/console";
 
 const token = (Deno.env.get("CICD_TOKEN") ?? "").trim();
 const prReviewer = "KinsonDigitalAdmin";
@@ -74,7 +74,7 @@ try {
 
 	const urlMatchText = urlMatch[0];
 	let url = urlMatchText.split("=")[1].trim();
-	const githubUrlRegex = /https:\/\/github\.com\/(.+\/)(.+)\.git/;
+	const githubUrlRegex = /https:\/\/github\.com\/([^\/\s]+\/)([\w.-]+?)(?:\.git)?(?=[\s"'`]|$)/;
 
 	if (!githubUrlRegex.test(url)) {
 		printIndianRed("The remote 'origin' URL is not a valid GitHub URL.");
@@ -173,7 +173,7 @@ const featureBranch = await Input.prompt({
 	},
 });
 
-const chosenBaseBranch = "preview";
+const chosenBaseBranch = "main";
 
 // If the chosen branch exists
 if (await branchExistsLocally(chosenBaseBranch)) {
