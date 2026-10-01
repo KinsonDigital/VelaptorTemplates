@@ -1,0 +1,7 @@
+{PROJECT_NAME} {VERSION} is live! 🚀
+
+Velaptor project templates just got better. Take Velaptor for a spin, share what you build, and help drive the framework's evolution! 🤘🏼
+
+Get started here: {WEBSITE_URL}
+
+#velaptor #dotnet #gamedev #opensource #indiedev
