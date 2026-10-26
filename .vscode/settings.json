@@ -30,5 +30,6 @@
     "[github-actions-workflow]": {
         "editor.tabSize": 2,
         "editor.insertSpaces": true
-    }
+    },
+    "dotnet.defaultSolution": "VelaptorTemplates.slnx"
 }

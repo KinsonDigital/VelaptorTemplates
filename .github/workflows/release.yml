@@ -35,7 +35,7 @@ jobs:
         id: validate-version
         uses: KinsonDigital/Infrastructure/actions/validate-version@5dade832543507f6ee8f9123794ca7dd3b317e67 # v19.0.1
         with:
-          version: "v${{ steps.get-version.outputs.version }}"
+          version: "${{ steps.get-version.outputs.version }}"
           release-type: "Production"
           cache-enabled: false
 
@@ -109,7 +109,7 @@ jobs:
 
   run_release:
     name: Performing Production Release of ${{ vars.PROJECT_NAME }}
-    needs: [get_and_validate_version, get_release_notes_path, build_vel_empty_template_proj, build_vel_render_texture_proj]
+    needs: [get_and_validate_version, validate_release, get_release_notes_path, build_vel_empty_template_proj, build_vel_render_texture_proj]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -151,7 +151,7 @@ jobs:
           tag: ${{ needs.get_and_validate_version.outputs.version }}
           owner: ${{ vars.ORGANIZATION_NAME }}
           repo: ${{ vars.PROJECT_NAME }}
-          bodyFile: "${{ github.workspace }}/ReleaseNotes/ProductionReleases/Release-Notes-v${{ needs.get_and_validate_version.outputs.version }}.md"
+          bodyFile: "${{ github.workspace }}/ReleaseNotes/ProductionReleases/Release-Notes-${{ needs.get_and_validate_version.outputs.version }}.md"
           prerelease: false
 
       - name: Set Up Deno

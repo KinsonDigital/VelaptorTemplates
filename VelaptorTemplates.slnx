@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".gitignore" />
+    <File Path="create-pr.ps1" />
+    <File Path="LICENSE" />
+    <File Path="prepare-for-release.ps1" />
+    <File Path="prod-prepare-release-template.md" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/VelaptorTemplates/">
+    <Project Path="VelaptorTemplates/VelaptorTemplates.csproj" />
+  </Folder>
+  <Folder Name="/VelaptorTemplates/Templates/">
+    <Project Path="VelaptorTemplates/Templates/VelaptorEmpty/VelaptorEmpty.csproj" />
+    <Project Path="VelaptorTemplates/Templates/VelaptorRenderTexture/VelaptorRenderTexture.csproj" />
+  </Folder>
+</Solution>
